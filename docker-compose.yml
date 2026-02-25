@@ -9,6 +9,8 @@ services:
     restart: unless-stopped
     ports:
       - "80:80"
+      - "8000:8000"
+      - "5173:5173"
     environment:
       - APP_ENV=production
       - APP_DEBUG=false
