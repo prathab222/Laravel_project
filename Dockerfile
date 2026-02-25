@@ -47,6 +47,7 @@ RUN apt-get update && apt-get install -y \
 # Copy extensions from build stage
 COPY --from=build /usr/local/etc/php/conf.d/ /usr/local/etc/php/conf.d/
 COPY --from=build /usr/local/lib/php/extensions/ /usr/local/lib/php/extensions/
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy configuration
 COPY docker/nginx.conf /etc/nginx/nginx.conf
