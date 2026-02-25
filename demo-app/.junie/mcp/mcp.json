@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/home/z0246@ad.ziffity.com/.config/herd-lite/bin/php",
+            "args": [
+                "/var/www/html/laravel/demo-app/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}

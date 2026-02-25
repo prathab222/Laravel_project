@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: laravel12:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      - APP_ENV=production
+      - APP_DEBUG=false
+      - DB_HOST=db
+      - REDIS_HOST=redis
+    volumes:
+      - ./storage:/var/www/html/storage
+    depends_on:
+      - db
+      - redis
+    # logging:
+    #   driver: "awslogs"
+    #   options:
+    #     awslogs-region: ${AWS_REGION:-us-east-1}
+    #     awslogs-group: "laravel-app-logs"
+    #     awslogs-stream: "app"
+
+  db:
+    image: mariadb:10.11
+    restart: unless-stopped
+    environment:
+      - MYSQL_DATABASE=${DB_DATABASE:-laravelDB}
+      - MYSQL_USER=${DB_USERNAME:-laravel_user}
+      - MYSQL_PASSWORD=${DB_PASSWORD:-Admin123}
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD:-toor123}
+    volumes:
+      - db_data:/var/lib/mysql
+    # logging:
+    #   driver: "awslogs"
+    #   options:
+    #     awslogs-region: ${AWS_REGION:-us-east-1}
+    #     awslogs-group: "laravel-db-logs"
+    #     awslogs-stream: "db"
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    # logging:
+    #   driver: "awslogs"
+    #   options:
+    #     awslogs-region: ${AWS_REGION:-us-east-1}
+    #     awslogs-group: "laravel-redis-logs"
+    #     awslogs-stream: "redis"
+
+volumes:
+  db_data:
