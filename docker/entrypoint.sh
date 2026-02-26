@@ -12,6 +12,9 @@ if [ ! -d "node_modules" ]; then
     npm install
 fi
 
+# Set permissions
+chown -R www-data:www-data /var/www/html
+
 # Start supervisord
 echo "Starting supervisord..."
 exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
