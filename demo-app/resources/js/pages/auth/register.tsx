@@ -12,19 +12,19 @@ import { store } from '@/routes/register';
 export default function Register() {
     return (
         <AuthLayout
-            title="Create an account"
-            description="Enter your details below to create your account"
+            title="Create your account"
+            description="Start with a clean workspace in under a minute."
         >
             <Head title="Register" />
             <Form
                 {...store.form()}
                 resetOnSuccess={['password', 'password_confirmation']}
                 disableWhileProcessing
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-5"
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
+                        <div className="grid gap-5">
                             <div className="grid gap-2">
                                 <Label htmlFor="name">Name</Label>
                                 <Input

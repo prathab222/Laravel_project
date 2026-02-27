@@ -1,5 +1,5 @@
 import { Link } from '@inertiajs/react';
-import { BookOpen, Folder, LayoutGrid, Users, Shield, Settings, BarChart3 } from 'lucide-react';
+import { LayoutGrid, Users, Shield, Settings, BarChart3 } from 'lucide-react';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -18,15 +18,7 @@ import { dashboard } from '@/routes';
 import { usePage } from '@inertiajs/react';
 
 interface PageProps {
-    auth: {
-        user: {
-            id: number;
-            name: string;
-            email: string;
-            role: string;
-            isSuperAdmin?: boolean;
-        };
-    };
+    [key: string]: unknown;
     userPermissions?: string[];
 }
 
@@ -150,7 +142,7 @@ const footerNavItems: NavItem[] = [
 ];
 
 export function AppSidebar() {
-    const { auth, userPermissions } = usePage<PageProps>().props;
+    const { userPermissions } = usePage<PageProps>().props;
     const permissionBasedItems = getPermissionBasedNavItems(userPermissions);
 
     return (

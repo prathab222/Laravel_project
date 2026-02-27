@@ -24,19 +24,19 @@ export default function Login({
 }: Props) {
     return (
         <AuthLayout
-            title="Log in to your account"
-            description="Enter your email and password below to log in"
+            title="Welcome back"
+            description="Sign in with your email and password."
         >
             <Head title="Log in" />
 
             <Form
                 {...store.form()}
                 resetOnSuccess={['password']}
-                className="flex flex-col gap-6"
+                className="flex flex-col gap-5"
             >
                 {({ processing, errors }) => (
                     <>
-                        <div className="grid gap-6">
+                        <div className="grid gap-5">
                             <div className="grid gap-2">
                                 <Label htmlFor="email">Email address</Label>
                                 <Input
@@ -88,7 +88,7 @@ export default function Login({
 
                             <Button
                                 type="submit"
-                                className="mt-4 w-full"
+                                className="mt-2 w-full"
                                 tabIndex={4}
                                 disabled={processing}
                                 data-test="login-button"
@@ -111,7 +111,7 @@ export default function Login({
             </Form>
 
             {status && (
-                <div className="mb-4 text-center text-sm font-medium text-green-600">
+                <div className="mb-4 text-center text-sm font-medium text-green-600 dark:text-green-400">
                     {status}
                 </div>
             )}

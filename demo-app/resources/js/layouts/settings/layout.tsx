@@ -43,16 +43,16 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
     }
 
     return (
-        <div className="px-4 py-6">
+        <div className="flex h-full flex-1 flex-col gap-6 overflow-x-auto rounded-3xl bg-gradient-to-b from-background/80 to-background p-4 md:p-6 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.45),transparent_58%),radial-gradient(rgba(15,23,42,0.06)_1.4px,transparent_1.4px)] [background-size:auto,30px_30px] dark:bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_58%),radial-gradient(rgba(255,255,255,0.09)_1.4px,transparent_1.4px)]">
             <Heading
                 title="Settings"
                 description="Manage your profile and account settings"
             />
 
-            <div className="flex flex-col lg:flex-row lg:space-x-12">
-                <aside className="w-full max-w-xl lg:w-48">
+            <div className="flex flex-col gap-6 lg:flex-row lg:gap-10">
+                <aside className="w-full max-w-xl lg:w-56">
                     <nav
-                        className="flex flex-col space-y-1 space-x-0"
+                        className="flex flex-col space-y-1 rounded-3xl border border-border/70 bg-card/80 p-2"
                         aria-label="Settings"
                     >
                         {sidebarNavItems.map((item, index) => (
@@ -61,8 +61,8 @@ export default function SettingsLayout({ children }: PropsWithChildren) {
                                 size="sm"
                                 variant="ghost"
                                 asChild
-                                className={cn('w-full justify-start', {
-                                    'bg-muted': isCurrentUrl(item.href),
+                                className={cn('h-10 w-full justify-start rounded-2xl', {
+                                    'bg-muted font-medium': isCurrentUrl(item.href),
                                 })}
                             >
                                 <Link href={item.href}>
