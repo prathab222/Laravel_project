@@ -1,16 +1,17 @@
 #!/bin/sh
 
 # Install PHP dependencies
-if [ ! -d "vendor" ]; then
-    echo "Installing composer dependencies..."
-    composer install --no-interaction --prefer-dist --optimize-autoloader
-fi
+echo "Installing composer dependencies..."
+composer install --no-interaction --prefer-dist --optimize-autoloader
+
 
 # Install Node dependencies
-if [ ! -d "node_modules" ]; then
-    echo "Installing npm dependencies..."
-    npm install
-fi
+echo "Installing npm dependencies..."
+npm install
+
+
+# Compile assets
+composer run dev
 
 # Set permissions
 chown -R www-data:www-data /var/www/html
