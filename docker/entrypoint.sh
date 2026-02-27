@@ -10,9 +10,6 @@ echo "Installing npm dependencies..."
 npm install
 
 
-# Compile assets
-composer run dev
-
 # Set permissions
 chown -R www-data:www-data /var/www/html
 
