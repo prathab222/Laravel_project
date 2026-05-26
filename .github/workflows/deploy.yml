@@ -2,8 +2,6 @@ name: Deploy Laravel to AWS
 
 on:
   workflow_dispatch:
-  
-on:
   push:
     branches: [ "main" ]
 
